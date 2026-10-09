@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>区块链投票系统</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+    h1 { text-align: center; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    label { display: block; margin: 10px 0 5px; }
+    input, select { width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px; }
+    button { padding: 10px 20px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    .result { display: flex; justify-content: space-between; margin: 5px 0; }
+    .bar { background: #2563eb; color: #fff; padding: 2px 8px; border-radius: 4px; }
+    #message { margin-top: 10px; font-weight: bold; }
+    pre { background: #f5f5f5; padding: 10px; border-radius: 6px; overflow-x: auto; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>区块链投票系统</h1>
+
+  <div class="card">
+    <h2>投票</h2>
+    <label>你的姓名（唯一）</label>
+    <input type="text" id="voter" placeholder="例如：张三">
+    <label>选择候选人</label>
+    <select id="candidate"></select>
+    <button onclick="castVote()">提交投票</button>
+    <div id="message"></div>
+  </div>
+
+  <div class="card">
+    <h2>实时结果</h2>
+    <div id="results"></div>
+  </div>
+
+  <div class="card">
+    <h2>区块链</h2>
+    <p id="chain-info"></p>
+    <pre id="chain"></pre>
+  </div>
+
+  <script>
+    async function loadCandidates() {
+      const res = await fetch('/candidates');
+      const data = await res.json();
+      const select = document.getElementById('candidate');
+      data.candidates.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        select.appendChild(opt);
+      });
+    }
+
+    async function loadResults() {
+      const res = await fetch('/results');
+      const data = await res.json();
+      const div = document.getElementById('results');
+      div.innerHTML = '';
+      for (const [name, count] of Object.entries(data.tally)) {
+        const row = document.createElement('div');
+        row.className = 'result';
+        row.innerHTML = `<span>${name}</span><span class="bar">${count} 票</span>`;
+        div.appendChild(row);
+      }
+      const total = document.createElement('p');
+      total.textContent = `总票数：${data.total_votes}`;
+      div.appendChild(total);
+    }
+
+    async function loadChain() {
+      const res = await fetch('/chain');
+      const data = await res.json();
+      document.getElementById('chain-info').textContent =
+        `区块数量：${data.length} | 链是否有效：${data.valid ? '有效' : '无效'}`;
+      document.getElementById('chain').textContent = JSON.stringify(data.chain, null, 2);
+    }
+
+    async function castVote() {
+      const voter = document.getElementById('voter').value.trim();
+      const candidate = document.getElementById('candidate').value;
+      const msg = document.getElementById('message');
+      msg.textContent = '';
+      const res = await fetch('/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ voter, candidate })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        msg.style.color = 'green';
+        msg.textContent = `投票成功！区块 #${data.block_index}`;
+      } else {
+        msg.style.color = 'red';
+        msg.textContent = data.error;
+      }
+      loadResults();
+      loadChain();
+    }
+
+    loadCandidates();
+    loadResults();
+    loadChain();
+  </script>
+</body>
+</html>
