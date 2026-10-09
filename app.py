@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 blockchain = Blockchain()
 
-CANDIDATES = ["Alice", "Bob", "Charlie"]
+CANDIDATES = ["月下", "观星", "爱莉希雅"]
 
 voters = set()
 
@@ -75,4 +75,4 @@ def chain():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=False)
