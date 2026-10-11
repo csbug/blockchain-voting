@@ -10,7 +10,7 @@ blockchain = Blockchain()
 
 CANDIDATES = ["月下", "观星", "爱莉希雅", "德里克.罗斯"]
 
-STORY_MAP = {"月下": "yuexia"}
+STORY_MAP = {"月下": "yuexia", "德里克.罗斯": "derrick"}
 
 voters = set()
 
@@ -92,6 +92,14 @@ def story(candidate):
     return send_from_directory(
         os.path.join(os.path.dirname(__file__), "stories", folder), "index.html"
     )
+
+
+@app.after_request
+def no_cache(response):
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
 if __name__ == "__main__":
