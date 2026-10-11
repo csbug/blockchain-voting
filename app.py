@@ -10,7 +10,7 @@ blockchain = Blockchain()
 
 CANDIDATES = ["月下", "观星", "爱莉希雅", "德里克.罗斯"]
 
-STORY_MAP = {"月下": "yuexia", "德里克.罗斯": "derrick"}
+STORY_MAP = {"月下": "yuexia", "德里克.罗斯": "derrick", "爱莉希雅": "elysia"}
 
 voters = set()
 
