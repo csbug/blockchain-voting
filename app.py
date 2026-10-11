@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 blockchain = Blockchain()
 
-CANDIDATES = ["月下", "观星", "爱莉希雅"]
+CANDIDATES = ["月下", "观星", "爱莉希雅", "德里克.罗斯"]
 
 voters = set()
 
