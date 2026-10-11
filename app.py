@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 
 from blockchain import Blockchain
 
@@ -9,6 +9,8 @@ app = Flask(__name__)
 blockchain = Blockchain()
 
 CANDIDATES = ["月下", "观星", "爱莉希雅", "德里克.罗斯"]
+
+STORY_MAP = {"月下": "yuexia"}
 
 voters = set()
 
@@ -62,7 +64,13 @@ def results():
         for vote in block.votes:
             if vote["candidate"] in tally:
                 tally[vote["candidate"]] += 1
-    return jsonify({"tally": tally, "total_votes": sum(tally.values())})
+    return jsonify(
+        {
+            "tally": tally,
+            "total_votes": sum(tally.values()),
+            "stories": {c: c in STORY_MAP for c in CANDIDATES},
+        }
+    )
 
 
 @app.route("/chain")
@@ -73,6 +81,16 @@ def chain():
             "valid": blockchain.is_valid(),
             "chain": [block.to_dict() for block in blockchain.chain],
         }
+    )
+
+
+@app.route("/story/<candidate>")
+def story(candidate):
+    folder = STORY_MAP.get(candidate)
+    if not folder:
+        return jsonify({"error": "该候选人暂无背景故事"}), 404
+    return send_from_directory(
+        os.path.join(os.path.dirname(__file__), "stories", folder), "index.html"
     )
 
 

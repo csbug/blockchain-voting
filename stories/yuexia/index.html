@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大月下 · 月下誓约·予爱以心</title>
+<style>
+  :root{
+    --bg1:#1a0b1f; --bg2:#2d0f2e; --moon:#ff5e7a; --gold:#e9c46a;
+    --txt:#f5e9f0; --sub:#c9a9c2; --card:rgba(255,255,255,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:radial-gradient(circle at 70% 10%,#3a1338 0%,var(--bg1) 55%,#0d0410 100%);
+    color:var(--txt); line-height:1.7; padding:24px 16px 60px;
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  header{text-align:center;margin-bottom:8px}
+  .title{font-size:34px;font-weight:800;letter-spacing:2px;
+    background:linear-gradient(90deg,#ffd9e0,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .subtitle{color:var(--sub);font-size:15px;margin-top:6px}
+  /* 主视觉 SVG 区 */
+  .hero{position:relative;margin:18px 0;border-radius:18px;overflow:hidden;
+    box-shadow:0 12px 40px rgba(255,94,122,.18)}
+  .hero svg{display:block;width:100%;height:auto}
+  /* 名片 */
+  .card{background:var(--card);border:1px solid rgba(233,196,106,.25);
+    border-radius:16px;padding:18px 20px;margin:18px 0;backdrop-filter:blur(4px)}
+  .card h2{font-size:18px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px}
+  .kv{font-size:14px}
+  .kv b{color:#ffb3c1;font-weight:600;margin-right:6px}
+  /* 时间线 */
+  .timeline{margin:10px 0 0;padding-left:0;list-style:none}
+  .timeline li{position:relative;padding:0 0 18px 26px;border-left:2px solid rgba(233,196,106,.3)}
+  .timeline li:last-child{border-left-color:transparent}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;
+    border-radius:50%;background:var(--moon);box-shadow:0 0 10px var(--moon)}
+  .timeline b{color:#ffd9e0}
+  /* 台词 */
+  .quote{margin:18px 0;padding:20px 22px;border-left:4px solid var(--moon);
+    background:linear-gradient(90deg,rgba(255,94,122,.12),transparent);
+    border-radius:0 14px 14px 0;font-size:18px;font-style:italic;color:#ffe3ea}
+  .quote span{display:block;margin-top:8px;font-size:13px;color:var(--sub);font-style:normal}
+  /* 亮点 */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .tag{background:rgba(233,196,106,.14);border:1px solid rgba(233,196,106,.35);
+    color:var(--gold);padding:6px 12px;border-radius:20px;font-size:13px}
+  .links{font-size:13px;color:var(--sub);margin-top:8px}
+  .links a{color:#ffb3c1;text-decoration:none}
+  footer{text-align:center;color:var(--sub);font-size:12px;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="title">🌙 大月下 · 月下誓约·予爱以心</div>
+    <div class="subtitle">德丽莎的「红月之约」——一个关于 <b style="color:#ffd9e0">爱 · 守护 · 久别重逢</b> 的故事</div>
+  </header>
+
+  <!-- 主视觉：红月 + 哥特窗 + 伸手邀约的剪影 -->
+  <div class="hero">
+    <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="红月下伸手邀约的少女">
+      <defs>
+        <radialGradient id="sky" cx="72%" cy="18%" r="90%">
+          <stop offset="0%" stop-color="#5a1b48"/>
+          <stop offset="45%" stop-color="#2d0f2e"/>
+          <stop offset="100%" stop-color="#0d0410"/>
+        </radialGradient>
+        <radialGradient id="moonG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffd0d8"/>
+          <stop offset="55%" stop-color="#ff5e7a"/>
+          <stop offset="100%" stop-color="#c2375a"/>
+        </radialGradient>
+        <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffd9e0"/>
+          <stop offset="100%" stop-color="#b54a78"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="360" fill="url(#sky)"/>
+      <!-- 星星 -->
+      <g fill="#ffe9ef">
+        <circle cx="120" cy="60" r="1.6"/><circle cx="200" cy="40" r="1.2"/>
+        <circle cx="300" cy="80" r="1.4"/><circle cx="80" cy="140" r="1.2"/>
+        <circle cx="420" cy="50" r="1.3"/><circle cx="160" cy="200" r="1.1"/>
+        <circle cx="540" cy="100" r="1.5"/><circle cx="700" cy="200" r="1.2"/>
+      </g>
+      <!-- 红月 -->
+      <circle cx="600" cy="95" r="62" fill="url(#moonG)"/>
+      <circle cx="600" cy="95" r="62" fill="none" stroke="#ffd0d8" stroke-opacity=".4" stroke-width="2"/>
+      <circle cx="585" cy="80" r="10" fill="#fff" fill-opacity=".25"/>
+      <circle cx="618" cy="110" r="7" fill="#fff" fill-opacity=".2"/>
+      <!-- 哥特拱窗剪影 -->
+      <g fill="#120612" opacity=".85">
+        <path d="M40 360 V150 a80 80 0 0 1 160 0 V360 Z"/>
+        <rect x="60" y="160" width="120" height="200" fill="#1a0a18"/>
+        <line x1="120" y1="160" x2="120" y2="360" stroke="#2d0f2e" stroke-width="6"/>
+        <line x1="60" y1="240" x2="180" y2="240" stroke="#2d0f2e" stroke-width="6"/>
+      </g>
+      <!-- 少女剪影：飘动长发 + 伸手邀约 -->
+      <g transform="translate(300 360)">
+        <!-- 长发 -->
+        <path d="M0 -150 q -55 30 -45 130 q 8 50 20 40 q -20 -90 10 -150 z" fill="url(#hair)" opacity=".95"/>
+        <path d="M40 -150 q 60 35 50 140 q -8 50 -22 38 q 18 -95 -12 -158 z" fill="url(#hair)" opacity=".95"/>
+        <!-- 身体 / 裙 -->
+        <path d="M-18 -150 q 18 -22 36 0 l 26 110 q -44 26 -88 0 z" fill="#3a153a"/>
+        <path d="M-30 -42 q 50 24 92 0 l -10 75 q -36 18 -72 0 z" fill="#2a0f2c"/>
+        <!-- 头 -->
+        <circle cx="2" cy="-168" r="22" fill="#ffd9e0"/>
+        <!-- 伸出的手（邀约） -->
+        <path d="M40 -120 q 60 -10 96 -2" stroke="#ffd9e0" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="140" cy="-124" r="9" fill="#ffd9e0"/>
+      </g>
+      <!-- 飘落花瓣 -->
+      <g fill="#ff8aa0">
+        <circle cx="470" cy="200" r="3"/><circle cx="520" cy="250" r="2.4"/>
+        <circle cx="440" cy="270" r="2.6"/><circle cx="500" cy="300" r="2.2"/>
+        <circle cx="560" cy="230" r="2.8"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 名片 -->
+  <div class="card">
+    <h2>🪪 角色名片</h2>
+    <div class="grid">
+      <div class="kv"><b>真名</b>德丽莎·阿波卡利斯</div>
+      <div class="kv"><b>别名</b>大月下 / 大德丽莎</div>
+      <div class="kv"><b>CV</b>花玲</div>
+      <div class="kv"><b>属性 / 武器</b>异能 / 十字架</div>
+      <div class="kv"><b>定位</b>雷伤输出 + 雷伤辅助</div>
+      <div class="kv"><b>必杀</b>逾越命运的告白</div>
+      <div class="kv"><b>星之环</b>天衍之杯（复盈相生）</div>
+      <div class="kv"><b>主题</b>爱 · 守护 · 久别重逢</div>
+    </div>
+  </div>
+
+  <!-- 背景故事 -->
+  <div class="card">
+    <h2>📖 背景故事（一图速览）</h2>
+    <ul class="timeline">
+      <li><b>她是谁：</b>天命前主教，卡斯兰娜×阿波卡利斯家族混血。因"诅咒"永远停留在 12 岁少女模样；千羽学园理事长、前休伯利安舰长，琪亚娜的监护人。</li>
+      <li><b>被囚的童年：</b>曾被当成"延续姐姐生命的人偶"，困在黑暗里。她和姐姐卡莲玩捉迷藏——每一次躲藏，其实都是逃离牢笼的演练。姐姐最终冒着警报与颤抖，把她带出了囚笼。</li>
+      <li><b>去看世界：</b>逃出后她去了餐厅、游乐园、海边、摩天轮……却感叹"没有你在身边，连景色也变得枯燥"。</li>
+      <li><b>不愿认命：</b>得知"德丽莎的故事注定是悲剧"的真相后，她不愿任由规则摆布——"凭什么我必须任由所谓的规则摆布？"</li>
+      <li><b>红月之约（大月下）：</b>以"爱·守护·久别重逢"为主题的装甲。必杀「逾越命运的告白」在红月下击溃敌人；特殊终结技「一同点燃的烟火」甚至会召唤"舰长"出来看烟花。</li>
+    </ul>
+  </div>
+
+  <!-- 经典台词 -->
+  <div class="quote">
+    「谢谢你，握住了我的手。我再也、再也不会放开你了。」
+    <span>——不是撒娇，而是一个历经离别、深知失去之痛的人，说出的誓言。</span>
+  </div>
+
+  <!-- 亮点 -->
+  <div class="card">
+    <h2>✨ 为什么这个角色吸引人</h2>
+    <div class="tags">
+      <span class="tag">反差萌：娇小"萝莉"主教，战斗却抡电锯开红月</span>
+      <span class="tag">情感内核：失去过才懂珍惜的温柔守护</span>
+      <span class="tag">玩家羁绊：把"舰长"写进技能与台词</span>
+      <span class="tag">强度在线：当前版本雷队主C / 大辅，可C可辅</span>
+      <span class="tag">哥特浪漫：红月、烟火、久别重逢的仪式感</span>
+    </div>
+  </div>
+
+  <div class="links">
+    🔗 想看真实立绘？官方图鉴：<a href="https://baike.mihoyo.com/bh3/wiki/content/2709/detail" target="_blank">miHoYo 崩坏3 wiki · 月下誓约·予爱以心</a>
+    <br>资料来源：miHoYo 崩坏3 官方 wiki、萌娘百科、米游社。
+  </div>
+
+  <footer>本页为兴趣向人物科普 · 插画为矢量风格化创作，非官方立绘</footer>
+</div>
+</body>
+</html>

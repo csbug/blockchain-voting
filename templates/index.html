@@ -63,7 +63,10 @@
       for (const [name, count] of Object.entries(data.tally)) {
         const row = document.createElement('div');
         row.className = 'result';
-        row.innerHTML = `<span>${name}</span><span class="bar">${count} 票</span>`;
+        const nameEl = data.stories && data.stories[name]
+          ? `<a href="/story/${encodeURIComponent(name)}" target="_blank" title="查看背景故事" style="color:#2563eb;text-decoration:underline;">${name}</a>`
+          : `<span>${name}</span>`;
+        row.innerHTML = `${nameEl}<span class="bar">${count} 票</span>`;
         div.appendChild(row);
       }
       const total = document.createElement('p');
